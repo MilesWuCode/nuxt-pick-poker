@@ -1,5 +1,28 @@
 <script setup lang="ts">
 const selectIndex = ref(0);
+
+const data = {
+  id: 123,
+  name: "PickPoker",
+};
+
+const isSelected = ref(false);
+
+const onSelected = (index: number) => {
+  if (isSelected.value) return;
+
+  selectIndex.value = index;
+
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(true);
+    }, 300);
+  }).then(() => {
+    isSelected.value = true;
+
+    console.log("api", index);
+  });
+};
 </script>
 
 <template>
@@ -7,9 +30,11 @@ const selectIndex = ref(0);
     <PickPokerCard
       v-for="i of 9"
       :key="i"
-      class="card"
       :class="{ selected: selectIndex === i }"
-      @click="selectIndex = i"
+      class="card"
+      :data="data"
+      :selected="selectIndex === i"
+      @click="onSelected(i)"
     />
   </div>
 </template>
