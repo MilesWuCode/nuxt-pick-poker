@@ -1,8 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const selectIndex = ref(0);
+</script>
 
 <template>
   <div class="border border-red-500 w-300 h-150 relative wrapper">
-    <PickPokerCard v-for="i of 9" :key="i" class="card" />
+    <PickPokerCard
+      v-for="i of 9"
+      :key="i"
+      class="card"
+      :class="{ selected: selectIndex === i }"
+      @click="selectIndex = i"
+    />
   </div>
 </template>
 
@@ -73,6 +81,18 @@
       transform: translateX(-50%) scale(var(--card-scale))
         rotate(calc(4 * var(--angle-per-card)));
       z-index: 8;
+    }
+
+    &.selected {
+      transform: translateX(-50%) rotate(0);
+      left: 50%;
+      bottom: 0;
+      width: 420px;
+      height: 600px;
+      z-index: 10;
+      &:hover {
+        bottom: 0;
+      }
     }
   }
 }
