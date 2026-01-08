@@ -26,7 +26,7 @@ const onSelected = (index: number) => {
 </script>
 
 <template>
-  <div class="border border-red-500 w-300 h-150 relative wrapper">
+  <div class="w-300 h-150 relative wrapper">
     <PickPokerCard
       v-for="i of 9"
       :key="i"
@@ -58,6 +58,7 @@ const onSelected = (index: number) => {
     left: 50%; /* Added to center the card horizontally */
     transform-origin: 50% var(--fan-radius);
     transition: all 0.25s;
+    -webkit-touch-callout: none;
 
     &:hover {
       bottom: 10rem;
@@ -124,21 +125,24 @@ const onSelected = (index: number) => {
 
 @media (max-width: 1024px) {
   .wrapper {
-    zoom: 0.6;
+    /* zoom: 0.6; */
+    transform: scale(0.6);
   }
 }
 
 /* RWD for Tablet */
 @media (max-width: 768px) {
   .wrapper {
-    zoom: 0.6;
+    /* zoom: 0.6; */
+    transform: scale(0.6);
   }
 }
 
 /* RWD for Mobile */
 @media (max-width: 640px) {
   .wrapper {
-    zoom: 0.3;
+    /* zoom: 0.3; */
+    transform: scale(0.3);
   }
 }
 </style>
