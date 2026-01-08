@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="border border-red-500 w-full h-125 relative wrapper">
+  <div class="border border-red-500 w-300 h-150 relative wrapper">
     <PickPokerCard v-for="i of 9" :key="i" class="card" />
   </div>
 </template>
@@ -14,9 +14,9 @@
     --angle-per-card: 每張卡片之間的夾角。
     --card-offset-y: 調整整個扇形的垂直位置。
   */
-  --fan-radius: 90rem;
+  --fan-radius: 100rem;
   --angle-per-card: 4deg;
-  --card-offset-y: 5.5rem;
+  --card-offset-y: 6rem;
   --card-scale: 1;
 
   .card {
@@ -24,6 +24,11 @@
     bottom: var(--card-offset-y);
     left: 50%; /* Added to center the card horizontally */
     transform-origin: 50% var(--fan-radius);
+    transition: all 0.25s;
+
+    &:hover {
+      bottom: 10rem;
+    }
 
     &:nth-child(1) {
       transform: translateX(-50%) scale(var(--card-scale))
@@ -72,21 +77,23 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .wrapper {
+    zoom: 0.6;
+  }
+}
+
 /* RWD for Tablet */
 @media (max-width: 768px) {
   .wrapper {
-    --fan-radius: 64rem;
-    --card-offset-y: 14rem;
-    --card-scale: 0.8;
+    zoom: 0.6;
   }
 }
 
 /* RWD for Mobile */
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .wrapper {
-    --fan-radius: 70rem;
-    --card-offset-y: 32rem;
-    --card-scale: 0.5;
+    zoom: 0.3;
   }
 }
 </style>
