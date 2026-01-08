@@ -60,6 +60,12 @@ const onSelected = (index: number) => {
     transition: all 0.25s;
     -webkit-touch-callout: none;
 
+    /* 放大一點防止跳動 */
+    &:deep(img):hover {
+      width: 300px;
+      height: 428px;
+    }
+
     &:hover {
       bottom: 10rem;
     }
