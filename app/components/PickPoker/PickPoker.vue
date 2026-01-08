@@ -14,9 +14,10 @@
     --angle-per-card: 每張卡片之間的夾角。
     --card-offset-y: 調整整個扇形的垂直位置。
   */
-  --fan-radius: 100rem;
+  --fan-radius: 90rem;
   --angle-per-card: 4deg;
   --card-offset-y: 5.5rem;
+  --card-scale: 1;
 
   .card {
     position: absolute;
@@ -25,41 +26,67 @@
     transform-origin: 50% var(--fan-radius);
 
     &:nth-child(1) {
-      transform: translateX(-50%) rotate(calc(-4 * var(--angle-per-card)));
+      transform: translateX(-50%) scale(var(--card-scale))
+        rotate(calc(-4 * var(--angle-per-card)));
       z-index: 0;
     }
     &:nth-child(2) {
-      transform: translateX(-50%) rotate(calc(-3 * var(--angle-per-card)));
+      transform: translateX(-50%) scale(var(--card-scale))
+        rotate(calc(-3 * var(--angle-per-card)));
       z-index: 1;
     }
     &:nth-child(3) {
-      transform: translateX(-50%) rotate(calc(-2 * var(--angle-per-card)));
+      transform: translateX(-50%) scale(var(--card-scale))
+        rotate(calc(-2 * var(--angle-per-card)));
       z-index: 2;
     }
     &:nth-child(4) {
-      transform: translateX(-50%) rotate(calc(-1 * var(--angle-per-card)));
+      transform: translateX(-50%) scale(var(--card-scale))
+        rotate(calc(-1 * var(--angle-per-card)));
       z-index: 3;
     }
     &:nth-child(5) {
-      transform: translateX(-50%) rotate(0deg);
+      transform: translateX(-50%) scale(var(--card-scale)) rotate(0deg);
       z-index: 4;
     }
     &:nth-child(6) {
-      transform: translateX(-50%) rotate(var(--angle-per-card));
+      transform: translateX(-50%) scale(var(--card-scale))
+        rotate(var(--angle-per-card));
       z-index: 5;
     }
     &:nth-child(7) {
-      transform: translateX(-50%) rotate(calc(2 * var(--angle-per-card)));
+      transform: translateX(-50%) scale(var(--card-scale))
+        rotate(calc(2 * var(--angle-per-card)));
       z-index: 6;
     }
     &:nth-child(8) {
-      transform: translateX(-50%) rotate(calc(3 * var(--angle-per-card)));
+      transform: translateX(-50%) scale(var(--card-scale))
+        rotate(calc(3 * var(--angle-per-card)));
       z-index: 7;
     }
     &:nth-child(9) {
-      transform: translateX(-50%) rotate(calc(4 * var(--angle-per-card)));
+      transform: translateX(-50%) scale(var(--card-scale))
+        rotate(calc(4 * var(--angle-per-card)));
       z-index: 8;
     }
+  }
+}
+
+/* RWD for Tablet */
+@media (max-width: 768px) {
+  .wrapper {
+    --fan-radius: 64rem;
+    --card-offset-y: 14rem;
+    --card-scale: 0.8;
+  }
+}
+
+/* RWD for Mobile */
+@media (max-width: 480px) {
+  .wrapper {
+    --fan-radius: 70rem;
+    --card-offset-y: 32rem;
+    --card-scale: 0.5;
   }
 }
 </style>
